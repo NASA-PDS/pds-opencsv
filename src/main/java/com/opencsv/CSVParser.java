@@ -66,6 +66,11 @@ public class CSVParser extends AbstractCSVParser {
     
     /** Locale for all translations. */
     private Locale errorLocale;
+    
+    /**
+     * Keep surrounding quotation characters in output.
+     */
+    private final boolean keepQuotations;
 
     /**
      * Constructs CSVParser using default values for everything.
@@ -95,6 +100,27 @@ public class CSVParser extends AbstractCSVParser {
      */
     CSVParser(char separator, char quotechar, char escape, boolean strictQuotes, boolean ignoreLeadingWhiteSpace,
               boolean ignoreQuotations, CSVReaderNullFieldIndicator nullFieldIndicator, Locale errorLocale) {
+        this(separator, quotechar, escape, strictQuotes, ignoreLeadingWhiteSpace, ignoreQuotations, nullFieldIndicator, errorLocale, DEFAULT_KEEP_QUOTATIONS);
+    }
+    
+    /**
+     * Constructs CSVParser.
+     * <p>This constructor sets all necessary parameters for CSVParser, and
+     * intentionally has package access so only the builder can use it.</p>
+     * 
+     * @param separator               The delimiter to use for separating entries
+     * @param quotechar               The character to use for quoted elements
+     * @param escape                  The character to use for escaping a separator or quote
+     * @param strictQuotes            If true, characters outside the quotes are ignored
+     * @param ignoreLeadingWhiteSpace If true, white space in front of a quote in a field is ignored
+     * @param ignoreQuotations        If true, treat quotations like any other character.
+     * @param nullFieldIndicator      Which field content will be returned as null: EMPTY_SEPARATORS, EMPTY_QUOTES,
+     *                                BOTH, NEITHER (default)
+     * @param errorLocale             Locale for error messages.
+     * @param keepQuotes              Keep surrounding quotes in output string.
+     */
+    CSVParser(char separator, char quotechar, char escape, boolean strictQuotes, boolean ignoreLeadingWhiteSpace,
+              boolean ignoreQuotations, CSVReaderNullFieldIndicator nullFieldIndicator, Locale errorLocale, boolean keepQuotes) {
         super(separator, quotechar, nullFieldIndicator);
         this.errorLocale = ObjectUtils.defaultIfNull(errorLocale, Locale.getDefault());
         if (anyCharactersAreTheSame(separator, quotechar, escape)) {
@@ -107,6 +133,7 @@ public class CSVParser extends AbstractCSVParser {
         this.strictQuotes = strictQuotes;
         this.ignoreLeadingWhiteSpace = ignoreLeadingWhiteSpace;
         this.ignoreQuotations = ignoreQuotations;
+        this.keepQuotations = keepQuotes;
     }
 
     /**
@@ -201,7 +228,6 @@ public class CSVParser extends AbstractCSVParser {
             }
             return null;
         }
-
         final List<String> tokensOnThisLine = tokensOnLastCompleteLine <= 0 ? new ArrayList<>() : new ArrayList<>((tokensOnLastCompleteLine + 1) * 2);
         final StringFragmentCopier sfc = new StringFragmentCopier(nextLine);
         boolean inQuotes = false;
@@ -211,6 +237,7 @@ public class CSVParser extends AbstractCSVParser {
             pending = null;
             inQuotes = !this.ignoreQuotations;
         }
+
         while (!sfc.isEmptyInput()) {
             final char c = sfc.takeInput();
             if (c == this.escape) {
@@ -225,9 +252,17 @@ public class CSVParser extends AbstractCSVParser {
                     if (sfc.isEmptyOutput()) {
                         fromQuotedField = true;
                     }
+                    
+                    if (inQuotes && this.keepQuotations) {
+                        sfc.append('"');
+                    }
 
                     // the tricky case of an embedded quote in the middle: a,bc"d"ef,g
                     handleQuoteCharButNotStrictQuotes(nextLine, sfc);
+                    
+                    if (!inQuotes && this.keepQuotations) {
+                        sfc.append('"');
+                    }
                 }
                 inField = !inField;
             } else if (c == separator && !(inQuotes && !ignoreQuotations)) {

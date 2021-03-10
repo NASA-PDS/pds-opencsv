@@ -84,6 +84,11 @@ public interface ICSVParser {
      * Default newline character for the parser.
      */
     String NEWLINE = "\n";
+    
+    /**
+     * Keep surrouding quotations for quoted fields.
+     */
+    boolean DEFAULT_KEEP_QUOTATIONS = false;
 
     /**
      * @return The default separator for this parser.
