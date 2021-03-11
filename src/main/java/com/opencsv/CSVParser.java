@@ -163,6 +163,13 @@ public class CSVParser extends AbstractCSVParser {
     public boolean isIgnoreQuotations() {
         return ignoreQuotations;
     }
+    
+    /**
+     * @return The default keepQuotations setting for this parser.
+     */
+    public boolean isKeepQuotations() {
+        return keepQuotations;
+    }
 
     /**
      * Checks to see if any two of the three characters are the same.

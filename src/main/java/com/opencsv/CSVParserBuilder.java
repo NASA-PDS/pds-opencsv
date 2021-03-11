@@ -128,6 +128,16 @@ public class CSVParserBuilder {
         this.ignoreQuotations = ignoreQuotations;
         return this;
     }
+    
+    /**
+     * Enables the CSVParser to keep surrounding quotations for quoted fields.
+     *
+     * @param keepQuotes true or false: keep surrounding quotes
+     */
+    public CSVParserBuilder withKeepQuotations(final boolean keepQuotes) {
+        this.keepQuotes = keepQuotes;
+        return this;
+    }
 
     /**
      * Constructs CSVParser.
@@ -144,7 +154,8 @@ public class CSVParserBuilder {
                 ignoreLeadingWhiteSpace,
                 ignoreQuotations,
                 nullFieldIndicator,
-                errorLocale);
+                errorLocale,
+                keepQuotes);
     }
 
     /**
@@ -188,6 +199,13 @@ public class CSVParserBuilder {
     public boolean isIgnoreQuotations() {
         return ignoreQuotations;
     }
+    
+    /**
+     * @return The defined keepQuotations setting.
+     */
+    public boolean isKeepQuotations() {
+        return keepQuotes;
+    }
 
     /**
      * Sets the NullFieldIndicator.
@@ -219,14 +237,4 @@ public class CSVParserBuilder {
         return nullFieldIndicator;
     }
     
-    
-    /**
-     * Enables the CSVParser to keep surrounding quotations for quoted fields.
-     *
-     * @param keepQuotes true or false: keep surrounding quotes
-     */
-    public CSVParserBuilder withKeepQuotations(final boolean keepQuotes) {
-        this.keepQuotes = keepQuotes;
-        return this;
-    }
 }
