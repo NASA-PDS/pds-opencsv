@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.opencsv</groupId>
     <artifactId>opencsv</artifactId>
     <packaging>jar</packaging>
-    <version>5.4</version>
+    <version>5.4-SNAPSHOT</version>
     <name>opencsv</name>
     <description>A simple library for reading and writing CSV in Java</description>
     <url>http://opencsv.sf.net</url>
@@ -35,11 +36,10 @@
         </license>
     </licenses>
     <scm>
-        <url>https://github.com/NASA-PDS/pds-opencsv</url>
-        <connection>scm:git:ssh://git@github.com/NASA-PDS/pds-opencsv.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/NASA-PDS/pds-opencsv.git</developerConnection>
-      <tag>v5.4</tag>
-  </scm>
+        <connection>scm:git:https://git.code.sf.net/p/opencsv/source</connection>
+        <developerConnection>scm:git:ssh://sourceforgeId@git.code.sf.net/p/opencsv/source</developerConnection>
+        <url>https://sourceforge.net/p/opencsv/source/ci/master/tree/</url>
+    </scm>
     <developers>
         <developer>
             <id>scott_conway</id>
@@ -245,7 +245,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore></ignore>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -258,7 +258,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore></ignore>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -480,8 +480,8 @@
                                 <requireMavenVersion>
                                     <version>[3.5.0,)</version>
                                 </requireMavenVersion>
-                                <dependencyConvergence />
-                                <banDuplicatePomDependencyVersions />
+                                <dependencyConvergence/>
+                                <banDuplicatePomDependencyVersions/>
                             </rules>
                         </configuration>
                     </execution>
