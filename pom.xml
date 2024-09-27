@@ -10,7 +10,7 @@
     <groupId>gov.nasa.pds</groupId>
     <artifactId>opencsv</artifactId>
     <packaging>jar</packaging>
-    <version>5.9.1-SNAPSHOT</version>
+    <version>5.5-SNAPSHOT</version>
     <name>opencsv</name>
     <description>A simple library for reading and writing CSV in Java</description>
     <inceptionYear>2005</inceptionYear>
@@ -355,18 +355,6 @@
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-checkstyle-plugin</artifactId>-->
-<!--                    <version>3.3.1</version>-->
-<!--                    <dependencies>-->
-<!--                        <dependency>-->
-<!--                            <groupId>com.puppycrawl.tools</groupId>-->
-<!--                            <artifactId>checkstyle</artifactId>-->
-<!--                            <version>9.3</version>    newer versions do not support Java 8 -->
-<!--                        </dependency>-->
-<!--                    </dependencies>-->
-<!--                </plugin>-->
             </plugins>
         </pluginManagement>
         <plugins>
@@ -764,23 +752,6 @@
                     <analysisCache>true</analysisCache> <!-- enable incremental analysis -->
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
-<!--                <version>3.3.1</version>-->
-<!--                <configuration>-->
-<!--                    <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>-->
-<!--                    <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>-->
-<!--                    <configLocation>checkstyle.xml</configLocation>-->
-<!--                </configuration>-->
-<!--                <reportSets>-->
-<!--                    <reportSet>-->
-<!--                        <reports>-->
-<!--                            <report>checkstyle</report>-->
-<!--                        </reports>-->
-<!--                    </reportSet>-->
-<!--                </reportSets>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
