@@ -1,0 +1,31 @@
+== Building
+
+Opencsv can be built using Maven 3 (Recommended: Maven 3.3) and JDK 8 / OpenJDK 8.   Later versions of Java can be used but we only support version 8.
+
+
+=== Maven 3 Goals
+
+Typical build command
+
+`mvn clean install`
+
+To build site documentation (Please run this command when making changes to the pom file).
+
+`mvn clean install site:site`
+
+=== Maven Profiles
+
+==== auto-module
+This is the default profile that runs when java version 8 is detected.
+
+==== jpms
+This profile is run when java version 9 or greater is detected.   This profile enables java 9 modules!
+
+==== noJavaUpperLimit
+When running jpms you will still run afoul of the maven-enforcer-plugin as we require the final build to be done with Java 8.   We do not want to change that default so for those who want to build a version of opencsv with a higher version of java can use this profile which will remove the upper bounds check.  Thus removing the need to modify the enforcer plugin for custom builds.
+
+==== skipPerformanceTests
+opencsv has a small number of PerformanceTests that are run with the JUnit tests.   Using this profile will run the unit tests without the performance tests saving a small amount of time - about 8.4 seconds on my macbook air.
+
+==== runPerformanceTests
+will run only the performance tests.
