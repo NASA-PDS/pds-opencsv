@@ -1,5 +1,9 @@
 # Changelog
 
+## [release/5.5.0](https://github.com/NASA-PDS/pds-opencsv/tree/release/5.5.0) (2026-05-26)
+
+[Full Changelog](https://github.com/NASA-PDS/pds-opencsv/compare/v5.4...release/5.5.0)
+
 ## [v5.4](https://github.com/NASA-PDS/pds-opencsv/tree/v5.4) (2021-10-01)
 
 [Full Changelog](https://github.com/NASA-PDS/pds-opencsv/compare/version-5.3...v5.4)
