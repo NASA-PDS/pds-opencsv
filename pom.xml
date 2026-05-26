@@ -33,7 +33,7 @@
         <commons-collections4.version>4.4</commons-collections4.version>
         <argLine>-Dfile.encoding=UTF-8</argLine>
         <junit.version>5.10.1</junit.version>
-        <junit.platform.version>1.10.1</junit.platform.version>
+        <junit.platform.version>6.1.0</junit.platform.version>
         <asciidoctor.maven.plugin.version>2.2.4</asciidoctor.maven.plugin.version>
         <asciidoctorj.version>1.6.2</asciidoctorj.version>  <!-- Newer versions are compiled in Java 11 -->
         <jruby.version>9.4.5.0</jruby.version>
