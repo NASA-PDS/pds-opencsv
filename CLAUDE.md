@@ -66,4 +66,3 @@ Annotation-driven mapping between CSV rows and Java beans:
 
 - **Unstable snapshot**: automatically published on push to `main` via the `unstable-cicd.yaml` workflow using `NASA-PDS/roundup-action@stable`
 - **Stable release**: triggered by pushing a tag matching `release/*`; uses `stable-cicd.yaml`
-- Requires org secrets: `ADMIN_GITHUB_TOKEN`, `CODE_SIGNING_KEY`, `CENTRAL_REPOSITORY_USERNAME`, `CENTRAL_REPOSITORY_TOKEN`
