@@ -28,7 +28,7 @@
         <maven.site.version>3.12.1</maven.site.version>
         <jacoco.version>0.8.11</jacoco.version>
         <maven.javadoc.version>3.6.2</maven.javadoc.version>
-        <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
+        <maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
         <commons-lang3.version>3.18.0</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <argLine>-Dfile.encoding=UTF-8</argLine>
